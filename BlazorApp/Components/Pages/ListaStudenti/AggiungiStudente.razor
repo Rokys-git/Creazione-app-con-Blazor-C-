@@ -1,0 +1,28 @@
+﻿@using BlazorApp.Models
+@using BlazorApp.wwwroot.Services.interfaces
+
+@page "/Studenti/aggiungi"
+
+
+
+<h3>AggiungiStudente</h3>
+    <EditForm Hodel="studente" OnValidSubmit="SalvaStudente" FormName="AggiungiStudente">
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <InputText class="form-control" @bind-Value ="studente.Nome"/>
+    </div>div class="mb-3">
+
+    <div class="mb-3">
+        <label class="form-label">Nome</label>
+        <InputText class="form-control" @bind-Value ="studente.Nome"/>
+    </div>
+
+
+</EditForm>
+@code {
+    private Studente studente = new();
+    private void SalvaStudente (EditContext args)
+    {
+        throw new NotImplementedException();
+    }
+}

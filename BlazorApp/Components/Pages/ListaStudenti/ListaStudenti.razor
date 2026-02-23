@@ -1,0 +1,50 @@
+﻿@using BlazorApp.Models
+@using BlazorApp.Services.Repositories
+@using BlazorApp.wwwroot.Services.interfaces
+
+@page "/Studenti"
+
+
+@inject NavigationManager NavigationManager
+@inject StudentiService StudentiService
+
+<h3>Studenti</h3>
+
+<a href="/studenti/aggiungi" class="btn btn-primary mb-2">Aggiungi Studente</a>
+
+<table class="table table-light table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Età</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in studenti)
+        {
+            <tr>
+                <td>@s.id</td>
+                <td>@s.Nome</td>
+                <td>@s.cognome</td>
+                <td>@s.eta</td>
+                <td>
+                    <button class="btn btn-primary btn-sm">Modifica</button>
+                    <button class="btn btn-danger btn-sm">Elimina</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@code {
+    private List<Studente> studenti = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        studenti = await StudentiService.GetAllStudentiAsync();
+    }
+}
